@@ -1,0 +1,40 @@
+&basic_parameter
+	imi = 500, 
+	jmi = 500, 
+	kmi = 2, 
+	dx  = 10.d3,
+	dy  = 10.d3,
+	dtmax=10.0,
+	dtmin=1.0,
+	f0  = 1.d-4,
+	b0  = 2.d-11,
+	gr01= 10.d0,
+	gr12= 2.5d-2,
+	hh1 = 1000.,
+	hh2 = 3000.,
+	vis = 1.0d12,
+	dif = 0.0d0,
+	bst = 0.0d0,
+	time_to_start=0.0,
+	time_to_end=500000.d0
+	output_interval=1000.,
+	monitor_interval=100. /
+
+&inicon_parameter
+	inival_u = 0.d0,
+	inival_v = 0.d0,
+	inival_e = 0.d0,
+	inityp  = 'default'/
+
+&bndcon_parameter
+	bndtyp_x = 'wall',
+	bndtyp_y = 'wall',
+	bndtyp_m = 'noslip',
+	bndtyp_e = 'insulating' /
+
+&user_parameter
+	rho0=1000.,
+	tx_yamp=0.1,
+	tx_ylen=5.d6,
+	tx_tamp=0.0,
+	tx_tper=5.d8 /
