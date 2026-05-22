@@ -23,7 +23,8 @@ program main
   character(*),parameter:: &
        !expid='flat2case2'
        !expid='seamount3case2'
-       expid='seamount2case2'
+       !expid='seamount2case2'
+       expid='test2'
 
   real(4):: &
        cputim1, cputim2

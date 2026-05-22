@@ -1,9 +1,10 @@
-#!/bin/sh
-#PBS -q default
-#PBS -l nodes=1:ppn=4
+#!/bin/bash
+#PBS -l select=1:ncpus=1:mpiprocs=1
 
-cd $PBS_O_WORKDIR
+set -e
 
-export OMP_NUM_THREADS=4
+cd ${PBS_O_WORKDIR}
 
-./flat2case2.exe
+time ./main.exe
+
+exit 0

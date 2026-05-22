@@ -1,6 +1,6 @@
-FC 	= ifort
-FFLAGS	= -fast
-FFLAGS	+= -parallel
+#FC 	= ifort
+#FFLAGS	= -fast
+#FFLAGS	+= -parallel
 #FFLAGS 	= -ipo -O3 -no-prec-div -static
 #FFLAGS 	= -axP -vec-report0
 #FFLAGS 	= -fast -vec-report0
@@ -9,7 +9,8 @@ FFLAGS	+= -parallel
 #FC	= frt
 ##FFLAGS	= -X9 -fw -Kparallel,instance=2,ocl #-Haesux
 #FFLAGS	= -X9 -Am -Haesux
-#FC	= gfortran
+FC	= gfortran
+FFLAGS=
 
 MODS = 	common.o  \
 	euler_asselin.o \
