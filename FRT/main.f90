@@ -24,7 +24,7 @@ program main
        !expid='flat2case2'
        !expid='seamount3case2'
        !expid='seamount2case2'
-       expid='test2'
+       expid='rect_mricom'
 
   real(4):: &
        cputim1, cputim2

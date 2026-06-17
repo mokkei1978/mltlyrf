@@ -1,24 +1,24 @@
 &basic_parameter
-	imi = 500, 
-	jmi = 500, 
+	imi = 60, 
+	jmi = 50, 
 	kmi = 2, 
-	dx  = 10.d3,
-	dy  = 10.d3,
-	dtmax=10.0,
-	dtmin=1.0,
-	f0  = 1.d-4,
-	b0  = 2.d-11,
+	dx  = 91.2d3,
+	dy  = 111.d3,
+	dtmax=120.0,
+	dtmin=12.0,
+	f0  = 8.37d-5,
+	b0  = 1.88d-11,
 	gr01= 10.d0,
-	gr12= 2.5d-2,
-	hh1 = 1000.,
-	hh2 = 3000.,
-	vis = 8.0d10,
+	gr12= 2.62d-2,
+	hh1 = 400.,
+	hh2 = 3600.,
+	vis = 1.0d12,
 	dif = 0.0d0,
 	bst = 0.0d0,
 	time_to_start=0.0,
-	time_to_end=50000000.d0
-	output_interval=100000.,
-	monitor_interval=10000. /
+	time_to_end=86313600.d0,
+	output_interval=86400.,
+	monitor_interval=86400. /
 
 &inicon_parameter
 	inival_u = 0.d0,
@@ -35,6 +35,6 @@
 &user_parameter
 	rho0=1000.,
 	tx_yamp=0.1,
-	tx_ylen=5.d6,
+	tx_ylen=5550.d3,
 	tx_tamp=0.0,
 	tx_tper=5.d8 /

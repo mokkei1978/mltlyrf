@@ -1,15 +1,29 @@
+#!/usr/bin/env python
+"""水位・流速の水平分布を描く
+
+Usage: eta_vel.py IREC
+
+Arguments:
+  IREC  record number (4 digits)
+"""
+
+
 '''2Dアニメーション'''
 import numpy as np
 import matplotlib.pyplot as plt
+from docopt import docopt
 
-im=500
-jm=500
+im=60
+jm=50
 km=2
-dx_m=10.e3
-dy_m=10.e3
+dx_m=91.2e3
+dy_m=111.e3
+
+args = docopt(__doc__)
+irec = args.get('IREC')
 
 #- ファイル読み込み
-f=open('../OUT/test2/test2.ss0500','rb')
+f=open('../OUT/rect_mricom01/rect_mricom.ss'+irec,'rb')
 nstep = np.fromfile(f,'i4',1)
 t_sec = np.fromfile(f,'f4',1)
 dat = np.fromfile(f,'f8',(im+2)*(jm+2)*km*3).reshape((im+2,jm+2,km,3),order='F')
@@ -22,7 +36,7 @@ x_km = (np.arange(im+2)-0.5)*dx_m * 1.e-3
 y_km = (np.arange(jm+2)-0.5)*dy_m * 1.e-3
 
 #- 流速 (ベクトルの長さは同じにして、色で流速を示す)
-dec = 20  # decimate (間引く間隔)
+dec = 2  # decimate (間引く間隔)
 u = np.zeros( (im+2,jm+2) )
 v = np.zeros( (im+2,jm+2) )
 u[1:,:] = 0.5*( dat[1:,:,k,0] + dat[:-1,:,k,0] )
@@ -43,13 +57,15 @@ fig, ax = plt.subplots()
 cs = ax.contour(x_km,y_km,eta_cm.T)
     #- index order of eta is reversed, so eta.T (transpose) are used.
 Q = ax.quiver(xu_km, yu_km, u[:,:].T, v[:,:].T, u_abs[:,:].T, cmap='jet', pivot='mid' )
-#    plt.colorbar(Q, label='Velocity [m/s]', shrink=0.6, ax=ax) うまくいかない
+plt.colorbar(Q, label='Velocity [m/s]', shrink=0.6, ax=ax)
 ax.clabel(cs)
-ax.set_title( f'SSH [cm] t = {t_sec}',fontsize=10)
+t_day = int( t_sec[0] / 3600. / 24.)
+ax.set_title( f'SSH [cm] t = {t_day} [day]',fontsize=10)
 ax.set_xlabel('X [km]')
 ax.set_ylabel('Y [km]')
 #    plt.pause(0.1)
 
-plt.show()
-
+#plt.show()
+plt.savefig('temp.png', bbox_inches='tight')
+plt.savefig('eta'+irec+'.png', bbox_inches='tight')
 
